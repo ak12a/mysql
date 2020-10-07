@@ -1,0 +1,46 @@
+# How to get how many users are on my sql server?
+select user from mysql.user;
+
+# How to check priviliges of a user ?
+
+show grants for 'repl'@'%';            # For repl user 
+
+show grants for 'root'@'localhost';    # Check root privileges  on localhost
+
+show grants for 'root'@'%';            # Check root privileges on network
+
+
+
+# How to get  granted privileges on all users 
+SELECT * FROM information_schema.user_privileges;
+
+# How to Export/Backup privileges of all users into a file 
+SELECT * FROM information_schema.user_privileges  INTO outfile '/tmp/show_grants.txt';
+
+# Create a database
+create database mydb;
+
+# To show how many databases
+show databases;
+
+# To select a database
+use database mydb;
+
+# create new table with data in database
+CREATE TABLE Persons (
+    PersonID int,
+    LastName varchar(255),
+    FirstName varchar(255),
+    Address varchar(255),
+    City varchar(255)
+);
+
+# Create a copy of tables 
+CREATE TABLE <New_TABLE_NAME>   LIKE  <OLD_TABLE_NAME>;
+
+#Example-
+CREATE TABLE db_hash_dbimage2  LIKE db_hash_dbimage;
+
+# Rename a tables
+RENAME TABLE  <OLD_TABLE_NAME> TO  <New_TABLE_NAME>;
+
